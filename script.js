@@ -4,7 +4,7 @@ const storage = localStorage;
 
 const table = document.querySelector('table');
 const todo = document.getElementById('todo');
-const priority = document.querySelector('select');
+// const priority = document.querySelector('select');
 const deadline = document.querySelector('input[type="date"]');
 const submit = document.getElementById('submit');
 
@@ -57,17 +57,17 @@ submit.addEventListener('click', () => {
   } else {
     item.todo = 'ダミーTODO';
   }
-  item.priority = priority.value;
-  if (deadline.value != '') {
-    item.deadline = deadline.value;
-  } else {
-    const date = new Date();
-    item.deadline = date.toLocaleDateString().replace(/\//g, '-');
-  }
+  // item.priority = priority.value;
+  // if (deadline.value != '') {
+  //   item.deadline = deadline.value;
+  // } else {
+  //   const date = new Date();
+  //   item.deadline = date.toLocaleDateString().replace(/\//g, '-');
+  // }
   item.done = false;
 
   todo.value = '';
-  priority.value = '普';
+  // priority.value = '普';
   deadline.value = '';
 
   addItem(item);
@@ -76,20 +76,20 @@ submit.addEventListener('click', () => {
   storage.todoList = JSON.stringify(list);
 });
 
-const filterButton = document.createElement('button');
-filterButton.textContent = '優先度（高）で絞り込み';
-filterButton.id = 'priority';
+// const filterButton = document.createElement('button');
+// filterButton.textContent = '優先度（高）で絞り込み';
+// // filterButton.id = 'priority';
 const main = document.querySelector('main');
-main.appendChild(filterButton);
+// main.appendChild(filterButton);
 
-filterButton.addEventListener('click', () => {
-  clearTable();
-  for (const item of list) {
-    if (item.priority == '高') {
-      addItem(item);
-    }
-  }
-});
+// filterButton.addEventListener('click', () => {
+//   clearTable();
+//   for (const item of list) {
+//     if (item.priority == '高') {
+//       addItem(item);
+//     }
+//   }
+// });
 
 const clearTable = () => {
   const trList = Array.from(document.getElementsByTagName('tr'));
